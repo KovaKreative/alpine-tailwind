@@ -8,15 +8,39 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="text-center bg-slate-950 text-orange-300">
+<body class="text-center bg-slate-950 text-orange-300 p-1">
 
   <h1 x-data="{ message: 'Alpine and Tailwind' }" x-text="message" class="text-5xl font-bold"></h1>
-  <main class="flex justify-around gap-1 m-8 text-orange-100">
+  <main class="flex justify-around items-start  gap-1 m-8 text-orange-100">
+
+    <!-- Counter -->
     <section class="w-1/4 bg-sky-950 flex justify-around rounded p-8" id="counter" x-data="{ count: 0 }">
-      <button x-on:click="count++" class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded">Increment</button>
+      <button x-on:mouseenter="count--" x-on:click="count++"
+        class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded">Increment</button>
       <span class="text-2xl font-semibold" x-text="count"></span>
     </section>
+    <div class="w-1/4 bg-sky-950 rounded p-8" x-data="{ open: false }">
+      <button class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded"
+        @click="open = !open">Toggle</button>
+      <ul x-show="open" @click.outside="open = false" x-data="{ chars: [
+        { name: 'Johnny', age: 29 },
+        { name: 'Liu', age: 24 },
+        { name: 'Sonya', age: 26 },
+        { name: 'Kano', age: 25 },
+        { name: 'Scorpion', age: 32 },
+        { name: 'Sub-Zero', age: 32 },
+        { name: 'Raiden', age: Infinity }
+        ] }">
+        <template x-for="char in chars">
+          <li class="even:bg-sky-800 odd:bg-sky-700 p-2">
+            <p><b>Name:</b> <span x-text="char.name"></span></p>
+            <p><b>Age:</b> <span x-text="char.age"></span></p>
+          </li>
+        </template>
+      </ul>
+    </div>
   </main>
+
 
 </body>
 
