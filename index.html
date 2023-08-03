@@ -8,14 +8,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="text-center">
+<body class="text-center bg-slate-950 text-orange-300">
 
-  <h1 x-data="{ message: 'Alpine and Tailwind' }" x-text="message" class="text-3xl font-bold"></h1>
-
-  <section id="counter" x-data="{ count: 0 }">
-    <button x-on:click="count++">Increment</button>
-    <span x-text="count"></span>
-  </section>
+  <h1 x-data="{ message: 'Alpine and Tailwind' }" x-text="message" class="text-5xl font-bold"></h1>
+  <main class="flex justify-around gap-1 m-8 text-orange-100">
+    <section class="w-1/4 bg-sky-950 flex justify-around rounded p-8" id="counter" x-data="{ count: 0 }">
+      <button x-on:click="count++" class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded">Increment</button>
+      <span class="text-2xl font-semibold" x-text="count"></span>
+    </section>
+  </main>
 
 </body>
 
