@@ -4,11 +4,19 @@
 <head>
   <meta charset="utf-8">
   <title>Alpine Tailwind</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <script>
-  </script>
+<body class="text-center">
+
+  <h1 x-data="{ message: 'Alpine and Tailwind' }" x-text="message" class="text-3xl font-bold"></h1>
+
+  <section id="counter" x-data="{ count: 0 }">
+    <button x-on:click="count++">Increment</button>
+    <span x-text="count"></span>
+  </section>
+
 </body>
 
 </html>
