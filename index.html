@@ -19,7 +19,9 @@
         class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded">Increment</button>
       <span class="text-2xl font-semibold" x-text="count"></span>
     </section>
-    <div class="w-1/4 bg-sky-950 rounded p-8" x-data="{ open: false }">
+
+    <!-- Drop Down -->
+    <section class="w-1/4 bg-sky-950 rounded p-8" x-data="{ open: false }">
       <button class="text-xl bg-teal-700 hover:bg-teal-600 active:bg-teal-800 p-2 rounded"
         @click="open = !open">Toggle</button>
       <ul x-show="open" @click.outside="open = false" x-data="{ chars: [
@@ -38,7 +40,28 @@
           </li>
         </template>
       </ul>
-    </div>
+    </section>
+
+    <!-- Search -->
+    <section class="w-1/4 bg-sky-950 rounded p-8" x-data="{
+      search: '',
+      items: ['Dream Theater', 'Iron Maiden', 'Megadeth', 'Fear Factory', 'Twisted Sister', 'Fates Warning', 'Queen', 'Queensryche'],
+      get filteredItems() {
+        return this.items.filter(i => i.toLowerCase().includes(this.search.toLowerCase()))
+      }
+    }">
+      <input class="text-gray-800" x-model="search" placeholder="Search...">
+
+      <ul>
+        <template x-for="item in filteredItems" :key="item">
+          <li class="even:bg-sky-800 odd:bg-sky-700 p-2" x-text="item"></li>
+        </template>
+      </ul>
+
+
+    </section>
+
+
   </main>
 
 
